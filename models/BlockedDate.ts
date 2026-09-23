@@ -1,0 +1,1 @@
+import mongoose,{Schema,models} from 'mongoose'; const schema=new Schema({roomTypeId:{type:Schema.Types.ObjectId,ref:'RoomType',required:true},date:{type:Date,required:true},reason:String,createdAt:{type:Date,default:Date.now}}); schema.index({roomTypeId:1,date:1},{unique:true}); export default models.BlockedDate||mongoose.model('BlockedDate',schema);

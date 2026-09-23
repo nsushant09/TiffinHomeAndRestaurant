@@ -1,0 +1,2 @@
+import { NextResponse } from 'next/server'; import { dbConnect } from '@/lib/mongodb'; import Booking from '@/models/Booking';
+export async function GET(_:Request,{params}:{params:Promise<{id:string}>}){try{const {id}=await params;await dbConnect();const b=await Booking.findOne({$or:[{_id:id},{bookingReference:id}]}).populate('roomTypeId','name slug').lean();if(!b)return NextResponse.json({error:'Booking not found'},{status:404});return NextResponse.json(b);}catch{return NextResponse.json({error:'Booking not found'},{status:404});}}

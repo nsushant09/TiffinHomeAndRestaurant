@@ -1,0 +1,1 @@
+import {redirect} from 'next/navigation'; import {getServerSession} from 'next-auth'; import {authOptions} from '@/auth'; import AdminDashboard from '@/components/AdminDashboard'; export default async function Admin(){const session=await getServerSession(authOptions);if(!session)redirect('/admin/login');return <AdminDashboard/>}

@@ -1,0 +1,1 @@
+import { NextResponse } from 'next/server'; import { dbConnect } from '@/lib/mongodb'; import RoomType from '@/models/RoomType'; export async function GET(){try{await dbConnect(); return NextResponse.json(await RoomType.find({active:true}).lean());}catch(e){return NextResponse.json({error:e instanceof Error?e.message:'Database unavailable'},{status:500});}}

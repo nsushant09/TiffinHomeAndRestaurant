@@ -1,0 +1,2 @@
+import fs from 'fs'; import path from 'path'; const extensions=/\.(jpg|jpeg|png|webp|avif|gif)$/i;
+export function assetImages(folder:string) { const dir=path.join(process.cwd(),'public','images',folder); if (!fs.existsSync(dir)) return []; return fs.readdirSync(dir).filter(f=>extensions.test(f)).map(f=>`/images/${folder}/${encodeURIComponent(f)}`); } export function allMenuImages(){return assetImages('menu');}
