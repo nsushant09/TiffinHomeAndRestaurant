@@ -22,7 +22,7 @@ export default function Location() {
       <section className="mx-auto max-w-[90rem] px-5 py-20 lg:px-10 lg:py-28">
         <div className="grid gap-16 lg:grid-cols-[.72fr_1.28fr] lg:gap-20">
           <div>
-            <p className="text-sm font-medium text-[#a75536]">A quiet base for days outside</p>
+            <p className="text-sm font-medium text-forest-700">A quiet base for days outside</p>
             <h2 className="mt-4 text-4xl font-bold leading-[1.12] tracking-[-0.04em] text-forest-950 sm:text-5xl">
               About ten minutes from the Rapti River on foot.
             </h2>
@@ -33,7 +33,7 @@ export default function Location() {
             <div className="mt-10 border-y border-stone-300">
               {details.map(([Icon, label, value]) => (
                 <div key={label} className="grid grid-cols-[2.75rem_1fr] gap-4 border-b border-stone-200 py-5 last:border-b-0">
-                  <Icon size={19} className="mt-1 text-[#a75536]" />
+                  <Icon size={19} className="mt-1 text-forest-700" />
                   <div>
                     <p className="text-xs font-semibold text-stone-500">{label}</p>
                     {label === 'Email' ? (
@@ -60,7 +60,7 @@ export default function Location() {
           <div className="relative overflow-hidden rounded-[1.5rem_5rem_1.5rem_1.5rem] border border-stone-300 bg-white p-6 sm:p-10 lg:p-12">
             <div className="absolute right-0 top-0 h-28 w-28 rounded-bl-[5rem] bg-[#efe6d7]" aria-hidden="true" />
             <div className="relative">
-              <p className="text-sm font-medium text-[#a75536]">Send a message</p>
+              <p className="text-sm font-medium text-forest-700">Send a message</p>
               <h2 className="mt-3 max-w-xl text-3xl font-semibold leading-tight tracking-[-0.035em] text-forest-950 sm:text-4xl">
                 Ask about a room, a group stay or getting here.
               </h2>

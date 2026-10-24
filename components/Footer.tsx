@@ -1,5 +1,8 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { site } from '@/lib/config';
 
@@ -7,6 +10,13 @@ const footerLink =
   'group flex w-fit items-center gap-2 text-sm text-forest-100/65 transition-colors duration-300 hover:text-white focus-visible:outline-none focus-visible:text-white';
 
 export default function Footer() {
+  const pathname = usePathname();
+
+  // On the home page, the footer is embedded inside the full-screen layout
+  if (pathname === '/') {
+    return null;
+  }
+
   return (
     <footer className="overflow-hidden bg-forest-950 text-white">
       <div className="mx-auto max-w-[90rem] px-5 py-14 lg:px-10 lg:py-20">
@@ -32,36 +42,46 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="grid gap-12 py-12 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1.4fr] lg:gap-20">
+        <div className="grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4 lg:py-16">
           <div>
-            <h2 className="text-sm font-semibold text-forest-200">Explore</h2>
-            <div className="mt-5 grid gap-3.5">
-              <Link href="/rooms" className={footerLink}>Rooms <ArrowUpRight size={14} className="opacity-0 transition-opacity group-hover:opacity-100" /></Link>
-              <Link href="/restaurant" className={footerLink}>Restaurant <ArrowUpRight size={14} className="opacity-0 transition-opacity group-hover:opacity-100" /></Link>
-              <Link href="/tours" className={footerLink}>Experiences <ArrowUpRight size={14} className="opacity-0 transition-opacity group-hover:opacity-100" /></Link>
+            <p className="text-xs font-semibold uppercase tracking-wider text-forest-300">Stay &amp; eat</p>
+            <div className="mt-5 space-y-3">
+              <Link href="/rooms" className={footerLink}>Accommodation</Link>
+              <Link href="/restaurant" className={footerLink}>Restaurant &amp; menu</Link>
+              <Link href="/rooms" className={footerLink}>Room tariffs</Link>
+              <Link href="/packages" className={footerLink}>Holiday packages</Link>
             </div>
           </div>
           <div>
-            <h2 className="text-sm font-semibold text-forest-200">About</h2>
-            <div className="mt-5 grid gap-3.5">
-              <Link href="/story" className={footerLink}>Our story <ArrowUpRight size={14} className="opacity-0 transition-opacity group-hover:opacity-100" /></Link>
-              <Link href="/location" className={footerLink}>Location <ArrowUpRight size={14} className="opacity-0 transition-opacity group-hover:opacity-100" /></Link>
-              <Link href="/faq" className={footerLink}>FAQ <ArrowUpRight size={14} className="opacity-0 transition-opacity group-hover:opacity-100" /></Link>
+            <p className="text-xs font-semibold uppercase tracking-wider text-forest-300">Explore</p>
+            <div className="mt-5 space-y-3">
+              <Link href="/tours" className={footerLink}>Wildlife &amp; safaris</Link>
+              <Link href="/gallery" className={footerLink}>Photo gallery</Link>
+              <Link href="/story" className={footerLink}>Our story</Link>
+              <Link href="/faq" className={footerLink}>Guest FAQ</Link>
             </div>
           </div>
-          <div>
-            <h2 className="text-sm font-semibold text-forest-200">Contact</h2>
-            <div className="mt-5 grid gap-3.5 text-sm leading-6 text-forest-100/65">
-              <a href={`mailto:${site.email}`} className="w-fit break-all transition-colors duration-300 hover:text-white focus-visible:outline-none focus-visible:text-white">{site.email}</a>
-              <a href={`tel:${site.phone}`} className="w-fit transition-colors duration-300 hover:text-white focus-visible:outline-none focus-visible:text-white">{site.phone}</a>
-              <span>{site.location}</span>
+          <div className="sm:col-span-2 lg:col-span-2">
+            <p className="text-xs font-semibold uppercase tracking-wider text-forest-300">Contact us</p>
+            <div className="mt-5 grid gap-4 text-sm text-forest-100/75 sm:grid-cols-2">
+              <div>
+                <p className="font-semibold text-white">Address</p>
+                <p className="mt-1 leading-6">{site.location}</p>
+              </div>
+              <div>
+                <p className="font-semibold text-white">Direct communication</p>
+                <p className="mt-1 leading-6">
+                  <a href={`tel:${site.phone}`} className="hover:text-white">{site.phone}</a><br />
+                  <a href={`mailto:${site.email}`} className="hover:text-white">{site.email}</a>
+                </p>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-forest-100/40 sm:flex-row sm:justify-between">
-          <span>© {new Date().getFullYear()} {site.name}</span>
-          <span>Family-run in Sauraha for more than 20 years</span>
+        <div className="flex flex-col gap-3 border-t border-white/10 pt-8 text-xs text-forest-100/40 sm:flex-row sm:items-center sm:justify-between">
+          <p>© {new Date().getFullYear()} {site.name}. All rights reserved.</p>
+          <p>Genuine Nepali hospitality on the edge of Chitwan National Park.</p>
         </div>
       </div>
     </footer>

@@ -1,4 +1,40 @@
-import './globals.css'; import type {Metadata} from 'next'; import {Poppins} from 'next/font/google'; import {site} from '@/lib/config'; import Header from '@/components/Header'; import Footer from '@/components/Footer';
-const poppins=Poppins({subsets:['latin'],weight:['400','500','600','700'],display:'swap',variable:'--font-poppins'});
-export const metadata:Metadata={title:{default:site.name,template:`%s | ${site.name}`},description:'Family-run accommodation and freshly prepared restaurant in Sauraha, Chitwan, Nepal.',openGraph:{title:site.name,description:'Comfortable rooms, freshly prepared food and a warm family-run experience in Sauraha.'}};
-export default function RootLayout({children}:{children:React.ReactNode}){return <html lang="en" className={poppins.variable}><body><Header/><main>{children}</main><Footer/></body></html>}
+import './globals.css';
+import type { Metadata } from 'next';
+import { Poppins } from 'next/font/google';
+import { site } from '@/lib/config';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+  variable: '--font-poppins',
+});
+
+export const metadata: Metadata = {
+  title: { default: site.name, template: `%s | ${site.name}` },
+  description:
+    'Family-run accommodation and freshly prepared restaurant in Sauraha, Chitwan, Nepal. Over 18 years of genuine Nepali hospitality.',
+  openGraph: {
+    title: site.name,
+    description:
+      'Comfortable rooms, freshly prepared food and a warm family-run experience in Sauraha.',
+  },
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en" className={poppins.variable}>
+      <body>
+        <Header />
+        <main>{children}</main>
+        <Footer />
+      </body>
+    </html>
+  );
+}

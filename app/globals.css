@@ -4,11 +4,30 @@
 
 @layer base {
   * { @apply border-stone-200; }
-  html { @apply scroll-smooth; }
   body { @apply bg-[#fbf8f1] font-sans text-stone-950 antialiased; }
   ::selection { @apply bg-forest-200 text-forest-950; }
   input, select, textarea { @apply rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-stone-950 outline-none transition placeholder:text-stone-400 focus:border-forest-600 focus:ring-4 focus:ring-forest-600/10; }
   label { @apply mb-2 block text-sm font-medium text-stone-700; }
+}
+
+/* ── Default Smooth Scrolling ── */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom sleek scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #071c10;
+}
+::-webkit-scrollbar-thumb {
+  background: #14502b;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #30894f;
 }
 
 @layer components {
@@ -21,11 +40,11 @@
   }
 
   .btn-light {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-[#81391f] transition-all duration-300 ease-out hover:bg-orange-50 hover:shadow-lg hover:shadow-black/10 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/30 active:scale-[.97];
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-forest-900 transition-all duration-300 ease-out hover:bg-forest-50 hover:text-forest-700 hover:shadow-lg hover:shadow-black/10 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/30 active:scale-[.97];
   }
 
   .btn-warm {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-[#f4d3b6] px-6 py-3.5 text-sm font-semibold text-forest-950 transition-all duration-300 ease-out hover:bg-white hover:shadow-lg hover:shadow-forest-950/15 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/20 active:scale-[.97];
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-forest-100 px-6 py-3.5 text-sm font-semibold text-forest-950 transition-all duration-300 ease-out hover:bg-white hover:shadow-lg hover:shadow-forest-950/15 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/20 active:scale-[.97];
   }
 
   .btn-primary svg,
@@ -71,13 +90,7 @@
     @apply transition-opacity duration-300 ease-out hover:opacity-70 focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-forest-600/15;
   }
 
-  a svg {
-    @apply transition-transform duration-300 ease-out;
-  }
-
-  a:hover svg {
-    transform: translateX(4px);
-  }
+  /* a svg translateX removed so icons inside card links do not shift sideways */
 
   button.bg-forest-700 {
     @apply transition-all duration-300 ease-out hover:bg-forest-800 hover:shadow-lg hover:shadow-forest-900/15 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-forest-600/20 active:scale-[.98];

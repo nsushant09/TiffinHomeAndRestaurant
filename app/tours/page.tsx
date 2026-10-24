@@ -63,7 +63,7 @@ export default function Tours() {
                 </div>
               </div>
               <div className={`${index % 2 ? 'lg:order-1 lg:col-start-2' : 'lg:col-start-9'} lg:col-span-4`}>
-                <p className="text-sm font-medium text-[#a75536]">{index === 0 ? 'Forest' : index === 1 ? 'River' : 'Community'}</p>
+                <p className="text-sm font-medium text-forest-700">{index === 0 ? 'Forest' : index === 1 ? 'River' : 'Community'}</p>
                 <h3 className="mt-3 text-3xl font-semibold tracking-[-0.035em] text-forest-950 sm:text-4xl">{group.title}</h3>
                 <p className="mt-5 text-base leading-8 text-stone-600">{group.description}</p>
                 <div className="mt-7 border-y border-stone-300 py-2">
@@ -82,7 +82,7 @@ export default function Tours() {
       <section id="experience-enquiry" className="scroll-mt-24 bg-[#efe6d7]">
         <div className="mx-auto grid max-w-[90rem] gap-14 px-5 py-20 lg:grid-cols-[.72fr_1.28fr] lg:px-10 lg:py-28">
           <div>
-            <p className="text-sm font-medium text-[#a75536]">Make an enquiry</p>
+            <p className="text-sm font-medium text-forest-700">Make an enquiry</p>
             <h2 className="mt-4 text-4xl font-bold tracking-[-0.04em] text-forest-950 sm:text-5xl">What would you like to experience?</h2>
             <p className="mt-6 max-w-md text-base leading-8 text-stone-600">
               Share your dates and interests. We’ll reply with the available options. No payment is collected through this form.
