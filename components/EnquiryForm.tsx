@@ -8,7 +8,7 @@ const fieldClass =
   'w-full !rounded-none !border-x-0 !border-t-0 !border-stone-300 !bg-transparent !px-0 !py-3 text-[15px] !shadow-none focus:!border-forest-700 focus:!ring-0';
 
 export default function EnquiryForm({ type = 'general' }: { type?: 'tour' | 'general' }) {
-  const [state, setState] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+  const [state, setState] = useState<'idle' | 'sending' | 'success' | 'email-failed' | 'error'>('idle');
   const reduced = useReducedMotion();
 
   async function submit(event: React.FormEvent<HTMLFormElement>) {
@@ -35,7 +35,9 @@ export default function EnquiryForm({ type = 'general' }: { type?: 'tour' | 'gen
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
-      setState(response.ok ? 'success' : 'error');
+      if(!response.ok){setState('error');return;}
+      const result=await response.json();
+      setState(result.emailSent?'success':'email-failed');
     } catch {
       setState('error');
     }
@@ -43,7 +45,7 @@ export default function EnquiryForm({ type = 'general' }: { type?: 'tour' | 'gen
 
   return (
     <AnimatePresence mode="wait">
-      {state === 'success' ? (
+      {state === 'success' || state === 'email-failed' ? (
         <motion.div
           key="success"
           initial={reduced ? false : { opacity: 0, scale: 0.96 }}
@@ -62,7 +64,7 @@ export default function EnquiryForm({ type = 'general' }: { type?: 'tour' | 'gen
             </motion.span>
             <h3 className="mt-6 text-2xl font-semibold tracking-[-0.025em] text-forest-950">Thanks for getting in touch.</h3>
             <p className="mx-auto mt-3 max-w-sm text-sm leading-7 text-stone-500">
-              Your message has reached Tiffin Home. We’ll get back to you as soon as we can.
+              {state==='email-failed'?'Your enquiry was saved, but we could not notify the team automatically. Please call or email us as well.':'Your message has reached Tiffin Home. We’ll get back to you as soon as we can.'}
             </p>
           </div>
         </motion.div>
@@ -164,7 +166,7 @@ export default function EnquiryForm({ type = 'general' }: { type?: 'tour' | 'gen
               aria-live="polite"
               className="border-l-2 border-[#bd7c52] bg-[#fbf4ea] p-3 text-sm text-stone-700"
             >
-              The form is not connected yet. Please email or call us.
+              We could not save your message. Please email or call us.
             </motion.p>
           )}
         </motion.form>

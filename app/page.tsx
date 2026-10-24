@@ -66,7 +66,7 @@ export default function Home() {
             </h2>
             <div className="mt-8 space-y-5 text-[17px] leading-8 text-stone-600">
               <p>
-                At Tiffin Home and Restaurant, we believe every stay should feel comfortable, welcoming, and memorable. As a family-run business with over 18 years of hospitality experience, we&apos;re proud to offer genuine Nepali hospitality, comfortable accommodation, and delicious home-style meals.
+                At Tiffin Home and Restaurant, we believe every stay should feel comfortable, welcoming, and memorable. As a family-run business with more than 20 years of hospitality experience, we&apos;re proud to offer genuine Nepali hospitality, comfortable accommodation, and delicious home-style meals.
               </p>
               <p>
                 Our double and triple rooms feature comfortable beds, private bathrooms, hot water, air conditioning, fans, balconies, natural light, and 24-hour electricity. Enjoy the convenience of complimentary Wi-Fi, free bottled drinking water, a welcome drink, and in-room coffee and tea.
@@ -311,7 +311,7 @@ export default function Home() {
               Home-style Nepali cooking, freshly prepared.
             </h2>
             <p className="mt-6 text-[17px] leading-8 text-stone-600">
-              The restaurant is where our family journey began over 18 years ago in Sauraha. Enjoy comforting Nepali Dal Bhat, steamed Himalayan momos, hearty breakfasts before safaris, and freshly brewed masala chai.
+              The restaurant is where our family journey began more than 20 years ago in Sauraha. Enjoy comforting Nepali Dal Bhat, steamed Himalayan momos, hearty breakfasts before safaris, and freshly brewed masala chai.
             </p>
 
             <div className="mt-8 grid grid-cols-2 gap-4">
@@ -734,7 +734,7 @@ export default function Home() {
             We look forward to welcoming you to Sauraha.
           </h2>
           <p className="mx-auto mt-2 max-w-xl text-xs leading-relaxed text-forest-100/70 sm:text-sm">
-            Over 18 years of warm family hospitality. Clean comfortable rooms, authentic home-cooked meals, and wildlife adventures in Chitwan National Park.
+            More than 20 years of warm family hospitality. Clean comfortable rooms, authentic home-cooked meals, and wildlife adventures in Chitwan National Park.
           </p>
 
           <div className="mt-4 flex flex-wrap justify-center gap-3 text-xs">

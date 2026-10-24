@@ -10,8 +10,5 @@
     "directory": ".open-next/assets",
     "binding": "ASSETS"
   },
-  "vars": {
-    "NEXTAUTH_SECRET": "your-super-secret-key-goes-here",
-    "NEXTAUTH_URL": "https://workers.dev"
-  }
+  "vars": {}
 }

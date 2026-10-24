@@ -15,7 +15,7 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: { default: site.name, template: `%s | ${site.name}` },
   description:
-    'Family-run accommodation and freshly prepared restaurant in Sauraha, Chitwan, Nepal. Over 18 years of genuine Nepali hospitality.',
+    'Family-run accommodation and freshly prepared restaurant in Sauraha, Chitwan, Nepal. More than 20 years of family hospitality.',
   openGraph: {
     title: site.name,
     description:

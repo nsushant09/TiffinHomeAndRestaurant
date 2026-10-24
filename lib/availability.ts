@@ -2,12 +2,19 @@ import Booking from '@/models/Booking';
 import BlockedDate from '@/models/BlockedDate';
 import RoomType from '@/models/RoomType';
 import { nights } from './dates';
+import type { ClientSession } from 'mongoose';
 
-export async function getAvailability(roomTypeId:string,startDate:Date,endDate:Date) {
-  const room:any=await RoomType.findById(roomTypeId).lean();
+export async function getAvailability(roomTypeId:string,startDate:Date,endDate:Date,session?:ClientSession,excludeBookingId?:string) {
+  const roomQuery=RoomType.findById(roomTypeId);
+  if(session)roomQuery.session(session);
+  const room:any=await roomQuery.lean();
   if(!room) throw new Error('Room type not found');
-  const bookings=await Booking.find({roomTypeId,status:{$in:['pending','confirmed','checked_in']},checkIn:{$lt:endDate},checkOut:{$gt:startDate}}).lean();
-  const blocks=await BlockedDate.find({roomTypeId,date:{$gte:startDate,$lt:endDate}}).lean();
+  const bookingFilter:any={roomTypeId,status:{$in:['pending','confirmed','checked_in']},checkIn:{$lt:endDate},checkOut:{$gt:startDate}};
+  if(excludeBookingId)bookingFilter._id={$ne:excludeBookingId};
+  const bookingsQuery=Booking.find(bookingFilter);
+  const blocksQuery=BlockedDate.find({roomTypeId,date:{$gte:startDate,$lt:endDate}});
+  if(session){bookingsQuery.session(session);blocksQuery.session(session);}
+  const [bookings,blocks]=await Promise.all([bookingsQuery.lean(),blocksQuery.lean()]);
   const blocked=new Set(blocks.map(b=>new Date(b.date).toISOString().slice(0,10)));
   const daily=nights(startDate,endDate).map(date=>{
     const key=date.toISOString().slice(0,10);
